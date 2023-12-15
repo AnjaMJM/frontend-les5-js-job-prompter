@@ -1,3 +1,4 @@
+
 const departments = {
     marketing: {
         description: "Marketing omvat verschillende strategieën en activiteiten gericht op het promoten van producten, diensten of merken bij het doelpubliek. Het omvat het begrijpen van de behoeften en voorkeuren van consumenten, het uitvoeren van marktonderzoek, het ontwikkelen van marketingplannen en het implementeren van tactieken om potentiële klanten te bereiken en te betrekken. Marketingprofessionals analyseren markttrends, identificeren doelmarkten en creëren overtuigende boodschappen en communicatiestrategieën om merkbekendheid op te bouwen, klantenwerving te stimuleren en klantloyaliteit te bevorderen",
@@ -71,4 +72,68 @@ const departments = {
     }
 }
 
-console.log(departments);
+console.log("De afdeling sales heeft", departments.sales.numberOfEmployees, "medewerkers.");
+
+console.log("Marketing is een leuke afdeling om te werken.", departments.marketing.description)
+
+console.log("De afdeling Customer Service heeft", departments["customer-service"].numberOfEmployees, "medewerkers")
+
+console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager.", departments.sales.jobs[1].description)
+
+const userName = prompt('Hoi! Hoe heet je?');
+console.log(userName);
+//
+// document.getElementById('name').textContent = userName;
+
+const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+console.log(userInput);
+
+
+
+// switch (userInput) {
+//     case "sales":
+//     case "marketing":
+//     case "customer-service":
+//         console.log("Je koos", userInput, ".", departments[userInput].description)
+//         break
+// }
+
+if ((userInput === "marketing") || (userInput === "sales") || (userInput === "customer-service")) {
+    console.log("Je koos", userInput, ".", departments[userInput].description)
+} else {
+    console.error("Ongeldige keuze. Probeer het opnieuw door de pagina te verversen. Let erop dat je geen hoofdletters gebruikt in jou antwoord.")
+}
+
+console.log(`${userInput} is een leuke afdeling om te werken. Er werken op dit moment ${departments[userInput].numberOfEmployees} medewerker` )
+
+const userInputFunction = prompt(`Je koos ${userInput}. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.
+    0: ${departments[userInput].jobs[0].title}
+    1: ${departments[userInput].jobs[1].title}
+    2: ${departments[userInput].jobs[2].title}
+    3: ${departments[userInput].jobs[3].title}`)
+    // 4: ${departments[userInput].jobs[4].title}`);
+// console.log(departments.marketing.jobs[userInputFunction].title);
+
+if ((userInputFunction === "0") || (userInputFunction === "1") || (userInputFunction === "2") || (userInputFunction === "3") || (userInputFunction === "4")) {
+    console.log(`Je koos ${departments[userInput].jobs[userInputFunction].title}. Een uitdagende rol! ${departments[userInput].jobs[userInputFunction].description}` )
+
+    document.getElementById('role-title').textContent = departments[userInput].jobs[userInputFunction].title
+
+    document.getElementById('department-description').textContent = departments[userInput].description
+
+    document.getElementById('role-description').textContent = departments[userInput].jobs[userInputFunction].description
+
+} else {
+    console.error(`Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.`)
+
+    document.getElementById('error-message').textContent = `Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.`
+}
+
+
+// document.getElementById('role-title').textContent = departments[userInput].jobs[userInputFunction].title
+//
+// document.getElementById('department-description').textContent = departments[userInput].description
+//
+// document.getElementById('role-description').textContent = departments[userInput].jobs[userInputFunction].description
+//
+// document.getElementById('error-message').textContent = `Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.`
